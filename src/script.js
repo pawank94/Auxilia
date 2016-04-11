@@ -1,7 +1,7 @@
 var ctx = new AudioContext();
 var osc = ctx.createOscillator();
 var instrument = ctx.createOscillator();
-
+var chords=[110.00,487.33,246.94,598.46,440.00,523.25,329.63,196.00];
 var freq = 20000;
 var baseInstrumentFreq = 440;
 // See paper for this particular choice of frequencies
@@ -16,6 +16,42 @@ var zoomedSpectrumCanvas = document.getElementById('spectrum-zoom');
 // These are for the demos
 var thereminDemoIsActive = false;
 var scrollDemoIsActive   = false;
+var standbyModeIsActive = false;
+
+var standby = false;
+var keychange=true;
+var fullmode=false;
+var toggleSleep = function(){
+  var element=document.getElementById('standby-div');
+  if(!standby) {
+    fullmode=true;
+    $('#standby-div').addClass('standby-div-active');
+    $('.ring').removeClass('animate-ring');
+    if(element.requestFullscreen) {
+    element.requestFullscreen();
+    } else if(element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+    } else if(element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
+    } else if(element.msRequestFullscreen) {
+    element.msRequestFullscreen();
+    }
+  }
+  else {
+    if(document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if(document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+    } else if(document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    }
+    $('.ring').addClass('animate-ring');
+    $('.permission').removeClass('animate-permission');
+    $('#standby-div').removeClass('standby-div-active');
+    $('.permission').addClass('hide');
+  }
+  standby=!standby;
+};
 
 var getBandwidth = function(analyser, freqs) {
   var primaryTone = freqToIndex(analyser, window.freq);
@@ -75,10 +111,14 @@ var readMic = function(analyser) {
   // drawBall(ctx, band[0] - band[1]);
 
   if (window.thereminDemoIsActive) {
-    instrument.frequency.value = baseInstrumentFreq;
-    if (band[0] > 4 || band[1] > 4) {
-      var scale = 10;
-      instrument.frequency.value = baseInstrumentFreq + scale*(clamp(band[0] - band[1], -10, 10));
+   if (keychange) {
+      var bandChange = 5*Math.abs(band[1]-band[0])+Math.abs(band[1]-band[0])+1;
+      keychange=false;
+      var scale = 15;
+      instrument.frequency.value = chords[bandChange%8];
+      setTimeout(function(){
+        keychange=true;
+      },800);
     }
   }
   else {
@@ -91,7 +131,23 @@ var readMic = function(analyser) {
     var bandwidthDifference = clamp(band[1] - band[0], -10, 10);
     var currentScroll = $(window).scrollTop()
     var scale = 10;
-    $(window).scrollTop(currentScroll + scale*bandwidthDifference);
+    $(window).scrollTop(currentScroll + scale*(bandwidthDifference)*1.2);
+  }
+
+  if(window.standbyModeIsActive)
+  {
+    var diff=Math.abs(band[1]-band[0]);
+    if(diff>14)
+    {
+      if(standby)
+        toggleSleep();
+      else
+        $('.permission').addClass('animate-permission');
+    }
+  }
+  else
+  {
+    
   }
 };
 
@@ -144,7 +200,7 @@ var handleMic = function(stream, callback) {
 
   // Instrument
   var instrumentGain = ctx.createGain();
-  instrumentGain.gain.value = 0.1;
+  instrumentGain.gain.value = 0.3;
   instrumentGain.connect(ctx.destination);
 
   instrument.frequency.value = 0;
@@ -166,6 +222,11 @@ var handleMic = function(stream, callback) {
 
 // Handle demo buttons
 window.addEventListener('load', function() {
+  // $('.permission').on('keypress',function(e){
+  //   console.log(e);
+  //   if(standbyModeIsActive && standby && e.which==27)
+  //     console.log('rec');
+  // });
   document.getElementById('theremin-btn').addEventListener('click', function() {
     if (window.thereminDemoIsActive) {
       window.thereminDemoIsActive = false;

@@ -1,105 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<style>
-		html,body{
-			background:#e0e0e0;
-			height:100%;
-			width:100%;
-			overflow:hidden;
-		}
-		.button{
-			height:100px;
-			width:100px;
-			display: block;
-			border-radius: 50%;
-			cursor: pointer;
-		}
-		.hide{
-			display: none !important;
-		}
-		.ntext{
-			font-family: 'Segoe UI';
-			font-size:2em;
-			color:#4e4e4e;
-			letter-spacing:2px;
-			text-align: center;
-			position:absolute;
-			height:300px;
-			width: 300px;
-			top:65%;
-			left:50%;
-			transform-origin: 50% 50%;
-			transform:translateX(-50%);
-			margin-top:50px;
-			display:none;
-		}
-		.ring{
-			width:120px;
-			height:120px;
-			position:relative;
-			cursor:pointer;
-			border-radius:50%;
-			left:50%;
-			top:50%;
-			transform: translateX(-50%) translateY(-50%);
-		}
-		.mid{
-			position:absolute;
-			left:50%;
-			top:50%;
-			transform: translateX(-50%) translateY(-50%);
-		}
-		.animate-ring{
-			display:block !important;
-			border:2px solid #9e9e9e;
-			/*box-shadow:0px 0px 20px 100px rgba(255,255,255,0.5);*/
-			animation:ring-frame 1s infinite;
-		}
-		.animate{
-			display:block !important;
-			animation:key 1s linear;
-		}
-		@keyframes ring-frame{
-			0%{width:120px;height:120px;}
-			100%{width:200px;height:200px;}
-		}
-		@keyframes key {
-			0%{
-				display:block;
-				opacity:0;
-				font-size:1em;
-				width:0px;
-				margin-top:100px;
-			}
-			70%{
-				margin-top:70px;
-				opacity: 0.1;
-				font-size:1.5em;
-				width:100%;
-			}
-			100%{
-				margin-top:50px;
-				opacity: 1;
-				font-size: 2em;
-			}
-		}
-	</style>
 	<title>Freq overdrive</title>
 	<script src="src/annayang.js"></script>
 	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.2.1/annyang.min.js"></script>-->
 	<script src="src/jquery.js"></script>
+	<link rel="stylesheet" type="text" href="main.css"/>
+	<link rel="stylesheet" type="text" href="src/permission.css"/>
 </head>
 <body>
 	<div class="ring">
-		<img src="src/voice.svg" class="button mid" id="button-voice">
+		<img src="src/voice.svg" class="button" id="button-voice">
 		<!-- <img src="src/mute.svg" class="button mid" id="button-mute"> -->
 	</div>
-	<div class="sleep-notification ntext">Sleep mode active</div>
+	<div class="standby-notification ntext">Standby mode active</div>
 	<div class="scroll-notification ntext">Scroll mode active</div>
+	<div class="music-notification ntext">Music mode active</div>
+	<div class="listening ntext">Listening...</div>
+	<div id="standby-div"></div>
+	<div class="permission" onclick="toggleSleep()">
+		<span>Allow Computer to Standby</span>
+	</div>
 	<canvas id="spectrum" style="width:100%;height:200px;top:60%;position:absolute;"></canvas>
+	<div class="scroll-text">
+		Scroll mode Demo
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</div>
 	<script src="src/script.js"></script>
 	<script src="src/viz.js"></script>
-	<script src="src/main.js"></script>
+	<script src="main.js"></script>
 </body>
 </html>

@@ -18,7 +18,7 @@ var drawBall = function(ctx, pos) {
 
 var drawFrequencies = function(ctx, analyser, freqs, primaryTone, startFreq, endFreq) {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-  ctx.fillStyle = "rgba(0,0,0,0.8)";
+  ctx.fillStyle = "#fff";
 
   var primaryVolume = freqs[primaryTone];
   // For some reason, primaryVolume becomes 0 on firefox, I have no idea why
