@@ -27,7 +27,7 @@ var drawFrequencies = function(ctx, analyser, freqs, primaryTone, startFreq, end
   }
   for (var i = 0; i < (endFreq-startFreq); i++) {
     var volume = freqs[startFreq+i];
-    var normalizedX = Math.floor( i/(endFreq-startFreq) * ctx.canvas.width );
+    var normalizedX =  Math.floor( i/(endFreq-startFreq) * ctx.canvas.width );
     var normalizedY = Math.floor( 0.9 * volume/primaryVolume * ctx.canvas.height );
     ctx.fillRect( normalizedX, ctx.canvas.height - normalizedY - 20, 5, 1 );
   }

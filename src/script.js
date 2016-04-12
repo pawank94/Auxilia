@@ -1,7 +1,7 @@
 var ctx = new AudioContext();
 var osc = ctx.createOscillator();
 var instrument = ctx.createOscillator();
-var chords=[110.00,487.33,246.94,598.46,440.00,523.25,329.63,196.00];
+var chords=[220.00,487.33,246.94,598.46,440.00,523.25,329.63,382.00];
 var freq = 20000;
 var baseInstrumentFreq = 440;
 // See paper for this particular choice of frequencies
@@ -27,6 +27,7 @@ var toggleSleep = function(){
     fullmode=true;
     $('#standby-div').addClass('standby-div-active');
     $('.ring').removeClass('animate-ring');
+    $('#mic').removeClass('mic-animation');
     if(element.requestFullscreen) {
     element.requestFullscreen();
     } else if(element.mozRequestFullScreen) {
@@ -45,6 +46,7 @@ var toggleSleep = function(){
     } else if(document.webkitExitFullscreen) {
       document.webkitExitFullscreen();
     }
+    $('#mic').addClass('mic-animation');
     $('.ring').addClass('animate-ring');
     $('.permission').removeClass('animate-permission');
     $('#standby-div').removeClass('standby-div-active');
@@ -115,6 +117,7 @@ var readMic = function(analyser) {
       var bandChange = 5*Math.abs(band[1]-band[0])+Math.abs(band[1]-band[0])+1;
       keychange=false;
       var scale = 15;
+      console.log(bandChange+"");
       instrument.frequency.value = chords[bandChange%8];
       setTimeout(function(){
         keychange=true;
@@ -219,33 +222,3 @@ var handleMic = function(stream, callback) {
     callback(analyser);
   });
 };
-
-// Handle demo buttons
-window.addEventListener('load', function() {
-  // $('.permission').on('keypress',function(e){
-  //   console.log(e);
-  //   if(standbyModeIsActive && standby && e.which==27)
-  //     console.log('rec');
-  // });
-  document.getElementById('theremin-btn').addEventListener('click', function() {
-    if (window.thereminDemoIsActive) {
-      window.thereminDemoIsActive = false;
-      this.innerHTML = this.getAttribute('data-inactive-text');
-    }
-    else {
-      window.thereminDemoIsActive = true;
-      this.innerHTML = this.getAttribute('data-active-text');
-    }
-  });
-
-  document.getElementById('scroll-btn').addEventListener('click', function() {
-    if (window.scrollDemoIsActive) {
-      window.scrollDemoIsActive = false;
-      this.innerHTML = this.getAttribute('data-inactive-text');
-    }
-    else {
-      window.scrollDemoIsActive = true;
-      this.innerHTML = this.getAttribute('data-active-text');
-    }
-  });
-});

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Freq overdrive</title>
+	<title>Magik</title>
 	<script src="src/annayang.js"></script>
 	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.2.1/annyang.min.js"></script>-->
 	<script src="src/jquery.js"></script>
@@ -10,8 +10,18 @@
 </head>
 <body>
 	<div class="ring">
-		<img src="src/voice.svg" class="button" id="button-voice">
-		<!-- <img src="src/mute.svg" class="button mid" id="button-mute"> -->
+		
+	</div>
+	<div class="button">
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="mic" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 96.667 96.666" style="enable-background:new 0 0 96.667 96.666;" xml:space="preserve">
+		<g>
+			<g>
+				<path d="M48.333,73.296c9.519,0,17.263-7.744,17.263-17.262V17.262C65.596,7.743,57.852,0,48.333,0    c-9.519,0-17.262,7.743-17.262,17.262v38.773C31.071,65.553,38.814,73.296,48.333,73.296z" fill="#DC3D24"/>
+				<path d="M76.078,45.715h-3.437c-1.104,0-2,0.896-2,2v7.029c0,12.3-10.008,22.308-22.309,22.308S26.025,67.044,26.025,54.744    v-7.029c0-1.104-0.896-2-2-2h-3.437c-1.104,0-2,0.896-2,2v7.029c0,14.707,11.433,27.667,26.026,29.506v4.98h-15.35    c-1.104,0-2,0.896-2,2v3.436c0,1.104,0.896,2,2,2h38.138c1.104,0,2-0.896,2-2V91.23c0-1.104-0.896-2-2-2H52.051v-4.98    c14.594-1.838,26.026-14.799,26.026-29.506v-7.029C78.078,46.61,77.182,45.715,76.078,45.715z" fill="#DC3D24"/>
+			</g>
+		</g>
+	</svg>
+
 	</div>
 	<div class="standby-notification ntext">Standby mode active</div>
 	<div class="scroll-notification ntext">Scroll mode active</div>
@@ -23,33 +33,19 @@
 	</div>
 	<canvas id="spectrum" style="width:100%;height:200px;top:60%;position:absolute;"></canvas>
 	<div class="scroll-text">
-		Scroll mode Demo
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-		tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-		consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-		cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-		proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		<div class="scroll-texta">
+			Magik
+		</div>
+		<div class="scroll-textb">
+			Presented By
+		</div>
+		<span class="name">Shivangi Garg</span>
+		<span class="name">Pawan Kumar</span>
+		<span class="name">Meegada Mahesh</span>
 	</div>
 	<script src="src/script.js"></script>
 	<script src="src/viz.js"></script>
+	<script src="src/scroll.js"></script>
 	<script src="main.js"></script>
 </body>
 </html>

@@ -1,7 +1,12 @@
 (function(w){
 	var button=$('.button'),
 		isListening=false,
-		context=document.getElementById('spectrum').getContext('2d');
+		context=document.getElementById('spectrum').getContext('2d'),
+		introCounter=false;
+	/*scroll functions*/
+	window.sr = ScrollReveal();
+	sr.reveal('.scroll-text',500);
+	/*******************/
 	annyang.setLanguage('en-IN');
 	/*sleep mode function*/
 	function sleep(route){
@@ -14,7 +19,6 @@
 	function post(route) {
 		console.log('here');
 		var time = setTimeout(function(){
-			console.log('here');
 			sleep(route);
 		},30000);
         if (confirm('Please confirm Sleep mode.No response will trigger sleep in 30 seconds.')) {
@@ -89,9 +93,15 @@
 				func.activateModule();
 		},
 		activateModule:function(){
+			if(!introCounter)
+			{
+				introCounter=true;
+				$('.intro').removeClass('hide');
+			}
 			isListening=true;
 			func.prepare();
 			annyang.start();
+			$('#mic').addClass('mic-animation');
 			$('.ring').addClass('animate-ring');
 			$('.ntext').removeClass('hide');
 			$('.listening').removeClass('hide');
@@ -103,6 +113,7 @@
 			/*allfalse*/
 			window.scrollDemoIsActive = false;
 			/*all false*/
+			$('#mic').removeClass('mic-animation');
 			$('body').removeClass('remove-overflow');
 			$('.ring').removeClass('animate-ring');
 			// $("#button-voice").removeClass('hide');
@@ -123,6 +134,7 @@
 		count++;
       	if(count%2==0)
       	{
+      		$('#mic').addClass('mic-animation');
       		$('.ring').addClass('animate-ring');
 		    $('.permission').removeClass('animate-permission');
 		    $('#standby-div').removeClass('standby-div-active');
