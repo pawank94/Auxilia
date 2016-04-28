@@ -1,0 +1,16 @@
+{
+  "name": "dopler-speech",
+  "author": "ubuntu-bhando-mahesh",
+  "dependencies": {
+    "express": "~3.4.4",
+    "chalk": "^1.1.1",
+    "got": "^4.1.1",
+    "network-address": "^1.0.0",
+    "power-off": "^1.0.0",
+    "sleep-mode": "^1.1.0",
+    "sudo-block": "^1.2.0",
+    "update-notifier": "^0.5.0",
+    "user-startup": "^0.1.0",
+    "yargs": "^3.21.0"
+  }
+}

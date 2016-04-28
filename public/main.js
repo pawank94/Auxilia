@@ -4,7 +4,7 @@
 		context=document.getElementById('spectrum').getContext('2d'),
 		introCounter=false;
 	/*scroll functions*/
-	window.sr = ScrollReveal();
+	window.sr = ScrollReveal({ reset: true ,origin: 'bottom',distance: '50px',duration: 1000,rotate: { x: 45, y: 45, z: 45 },});
 	sr.reveal('.scroll-text',500);
 	/*******************/
 	annyang.setLanguage('en-IN');
@@ -40,6 +40,7 @@
 		'stop':function(){
 			func.prepare();
 			func.deactivateModule();
+			window.location.reload();
 			$('.ntext').addClass('hide');
 		},
 		'standby mode':function(){
@@ -144,5 +145,6 @@
 	annyang.addCommands(commands);
 	func.deactivateModule();
 	func.prepareCanvas();
+	annyang.start();
 	button.on('click',func.toggleModule);
 })(window);
