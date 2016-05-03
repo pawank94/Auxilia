@@ -44,37 +44,46 @@
 			$('.ntext').addClass('hide');
 		},
 		'standby mode':function(){
-			console.log('standby');
-			func.prepare();
-			$('body').removeClass('remove-overflow');
-			$('.scroll-notification').addClass('hide');
-			if($('.scroll-notification').hasClass('animate'))
-				$('.scroll-notification').removeClass('animate');
-			$('.standby-notification').removeClass('hide');
-			$('.standby-notification').addClass('animate');
-			standbyModeIsActive=true;
+			if(isListening=true){
+				console.log('standby');
+				func.prepare();
+				$('body').removeClass('remove-overflow');
+				$('.scroll-notification').addClass('hide');
+				if($('.scroll-notification').hasClass('animate'))
+					$('.scroll-notification').removeClass('animate');
+				$('.standby-notification').removeClass('hide');
+				$('.standby-notification').addClass('animate');
+				standbyModeIsActive=true;
+			}
 		},
 		'sleep mode':function(){
-			post('/sleep');
+			if(isListening=true){
+				post('/sleep');
+			}
 		},
 		'scroll mode':function(){
-			console.log('scroll');
-			func.prepare();
-			window.scrollDemoIsActive = true;
-			$('body').addClass('remove-overflow');
-			$('.standby-notification').addClass('hide');
-			if($('.standby-notification').hasClass('animate'))
-				$('.standby-notification').removeClass('animate');
-			$('.scroll-notification').removeClass('hide');
-			$('.scroll-notification').addClass('animate');
+			if(isListening=true){
+				console.log('scroll');
+				func.prepare();
+				window.scrollDemoIsActive = true;
+				$('body').addClass('remove-overflow');
+				$('.standby-notification').addClass('hide');
+				if($('.standby-notification').hasClass('animate'))
+					$('.standby-notification').removeClass('animate');
+				$('.scroll-notification').removeClass('hide');
+				$('.scroll-notification').addClass('animate');
+			}
+			
 		},
 		'music mode' : function(){
-			func.prepare();
-			if($('.music-notification').hasClass('animate'))
-				$('.music-notification').removeClass('animate');
-			$('.music-notification').removeClass('hide');
-			$('.music-notification').addClass('animate');
-			thereminDemoIsActive=true;
+			if(isListening=true){
+				func.prepare();
+				if($('.music-notification').hasClass('animate'))
+					$('.music-notification').removeClass('animate');
+				$('.music-notification').removeClass('hide');
+				$('.music-notification').addClass('animate');
+				thereminDemoIsActive=true;
+			}
 		}
 	};
 	var func = {
