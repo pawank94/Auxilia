@@ -5,14 +5,14 @@
 <ul>
 <li>NodeJS</li>
 <li>npm</li>
-<li>Apache/WAMP/XAAMP</li>
+<li>Apache/WAMP/XAMP</li>
 </ul>
 <h2>Installation Steps</h2>
 <ul>
-<li>Clone repo inside apache's folder</li>
-<li>Run 'npm install' with administrator priviledges in parent directory(npm and NodeJS must be installed before).</li>
+<li>Clone repo inside apache's folder.</li>
+<li>Run 'npm install' with administrator privileges in parent directory(npm and NodeJS must be installed before).</li>
 <li>Open command prompt in parent directory.</li>
-<li>run 'node app.js' and keep it running</li>
+<li>run 'node app.js' and keep it running.</li>
 <li>open you browser and type 'localhost:8070'</li>
 </ul>
 <h2>Use Cases and commands</h2>
@@ -21,10 +21,10 @@
   <li> Also reliable internet connection is a necessity for speech recognition to work. </li>
   <li> You can click on microphone svg or use voice commands to activate the module.</li>
 </ul>
-<h4>voice commands(works when module is active</h4>
+<h3>Voice commands(works when module is active)</h4>
 <ul>
   <li><b>Scroll mode:</b> Move your hand near microphone to see it in action.</li>
-  <li><b>Standby mode:</b> Whistle and click on allow computer to sleep. This will send it to fullscreen virtual sleep mode(not exactly sleep but display on screen off mode). On another whistle, black screen will vanish</li>
+  <li><b>Standby mode:</b> Whistle and click on allow computer to sleep. This will send it to fullscreen virtual sleep mode(not exactly sleep but display on screen off mode). On another whistle, black screen will vanish.</li>
   <li><b>Music mode:</b> Activate this mode and wave your hand around microphone to have some fun.</li>
   <li><b>Sleep mode:</b> will hibernate your computer system using voice command from browser.</li>
 <ul>
